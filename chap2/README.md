@@ -10,7 +10,7 @@
 
 ## 2-2 値の性質と値オブジェクトの実装
 
-[サンプルコード]()
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/feat/chap2/chap2/SampleCodes/2-2.ts)
 
 - 値がもつ性質を学ぶことは値オブジェクトを知る上で重要な事柄
 - 代表的な値の性質は次の 3 つ
