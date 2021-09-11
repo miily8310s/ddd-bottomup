@@ -1,3 +1,5 @@
+import { FullName } from "./FullName.ts";
+
 // プリミティブな値で氏名を表示
 const fullName = "yamada taro";
 console.log(fullName);
@@ -16,22 +18,6 @@ showLastName("yamada taro");
 // return john
 showLastName("john doe");
 
-// 氏名を表現するFullNameクラス
-// 本クラスで確実に性を表示できる
-class FullName {
-  firstName: string;
-  lastName: string;
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-  public getFirstName() {
-    return this.firstName;
-  }
-  public getLastName() {
-    return this.lastName;
-  }
-}
 const jpFullName = new FullName("taro", "yamada");
 // return yamada
 console.log(jpFullName.lastName);
