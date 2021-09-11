@@ -2,7 +2,7 @@
 
 ## 2-1 値オブジェクトとは
 
-[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/feat/chap2/chap2/SampleCodes/2-1.ts)
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap2/SampleCodes/2-1.ts)
 
 - 値オブジェクト = システム固有の値を表現するために定義されたオブジェクト
   - システムに最適な値は必ずしもプリミティブ（単純）な値であるとは限らない
@@ -10,7 +10,7 @@
 
 ## 2-2 値の性質と値オブジェクトの実装
 
-[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/feat/chap2/chap2/SampleCodes/2-2.ts)
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap2/SampleCodes/2-2.ts)
 
 - 値がもつ性質を学ぶことは値オブジェクトを知る上で重要な事柄
 - 代表的な値の性質は次の 3 つ
@@ -49,7 +49,7 @@
 
 ## 2-4 ふるまいを持った値オブジェクト
 
-[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/feat/chap2/chap2/SampleCodes/2-4.ts)
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap2/SampleCodes/2-4.ts)
 
 - 値オブジェクトで重要なこと=「独自のふるまいを定義できること」
 - 今回はお金を表現するお金オブジェクトで考えてみる
@@ -65,7 +65,7 @@
 
 ## 2-5 値オブジェクトを採用するモチベーション
 
-[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/feat/chap2/chap2/SampleCodes/2-5.ts)
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap2/SampleCodes/2-5.ts)
 
 - 値オブジェクトを採用するには、数多くの心理的ハードルを乗り越える必要がある
 - 値オブジェクトを使うモチベーションは次の４つ
