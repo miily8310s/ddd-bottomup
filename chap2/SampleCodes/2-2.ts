@@ -37,3 +37,17 @@ let chFullName = new FullName("taro", "yamada");
 chFullName = new FullName("taro", "tanaka");
 
 // 2.2.3 等価性によって比較される
+
+// 同じ種類の値同士の比較
+console.log(0 === 0); // true
+// console.log(0 === 1); // false
+console.log("a" === "a"); // true
+// console.log("a" === "b"); // false
+console.log("hello" === "hello"); // true
+// console.log("hello" === "こんにちは"); // false
+
+// 値オブジェクト同士の比較
+const nameA = new FullName("tarou", "yamada");
+const nameB = new FullName("john", "smith");
+const compareResult = nameA.equals(nameB);
+console.log(compareResult);

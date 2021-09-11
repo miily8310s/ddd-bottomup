@@ -7,6 +7,11 @@ export class FullName {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+  public equals(other: FullName) {
+    if (other === null) return false;
+    if (this === other) return true;
+    return this.firstName == other.firstName && this.lastName == other.lastName;
+  }
   public getFirstName() {
     return this.firstName;
   }
