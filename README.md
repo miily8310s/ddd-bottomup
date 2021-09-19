@@ -7,3 +7,4 @@
 | １章 | ドメイン駆動設計とは                             | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap1) |
 | ２章 | システム固有の値を表現する「値オブジェクト」     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap2) |
 | ３章 | ライフサイクルのあるオブジェクト「エンティティ」 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap3) |
+| ４章 | 不自然さを解決する「ドメインサービス」           | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap4) |
