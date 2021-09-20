@@ -8,3 +8,4 @@
 | ２章 | システム固有の値を表現する「値オブジェクト」     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap2) |
 | ３章 | ライフサイクルのあるオブジェクト「エンティティ」 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap3) |
 | ４章 | 不自然さを解決する「ドメインサービス」           | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap4) |
+| ５章 | データにまつわる処理を分離する「リポジトリ」     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap5) |
