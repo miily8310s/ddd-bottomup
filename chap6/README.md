@@ -1,7 +1,8 @@
 # ６章 ユースケースを実現する「アプリケーションサービス」
 
 - アプリケーションサービスはドメインオブジェクトを強調させてユースケースを実現する
-- ドメインオブジェクトはドメインモデルをコードによって表現したオブジェクト　 ex）値オブジェクト、エンティティ
+- ドメインオブジェクトはドメインモデルをコードによって表現したオブジェクト
+  - ex）値オブジェクト、エンティティ
 - ソフトウェアとして利用者の問題を解決するためには、これらのドメインオブジェクトをまとめ上げて問題を解決するように導く必要がある
 - アプリケーションサービスはドメインオブジェクトが行うタスクの進行を管理し、問題の解決に導くもの
 
@@ -20,8 +21,6 @@
 
 ## 6-2 ユースケースを組み立てる
 
-TODO: サンプルコードを追加する
-
 - アプリケーションサービスのサンプルとして本章では SNS のユーザ機能を取り上げる
 - システムとして成り立たせるために開発しなくてはならないものを洗い出すため、まずはユーザ機能がどういったものかを確認する
 - ユーザ機能を実現するには次の４つのユースケースが必要
@@ -33,6 +32,9 @@ TODO: サンプルコードを追加する
 
 ### ドメインオブジェクトから準備する
 
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap6/SampleCodes/)
+の UseCaseUser.ts/UseCaseUserService.ts/IUseCaseUserRepository.ts
+
 - まずはアプリケーションサービスが取り扱うドメインオブジェクトを準備
 - 今回のユーザーの概念はライフサイクルがあるモデルなので、エンティティとして実装される
 - User にはシステム固有の値オブジェクトとして UserId とユーザ名を定義
@@ -43,6 +45,9 @@ TODO: サンプルコードを追加する
 
 ### ユーザ登録処理を作成する
 
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap6/SampleCodes/)
+の UseCaseUserApplicationService.ts
+
 - 最初にユーザ登録処理のアプリケーションサービスを実装
 - Register メソッドでは最初に User オブジェクトを生成し、UserService に重複チェックをお願いしている
 - そして重複しないことを確認した場合、IUserRepository にインスタンスの永続化を依頼
@@ -51,6 +56,9 @@ TODO: サンプルコードを追加する
 - なお今回アプリケーションサービスとして定義した xxxx クラスは[第５章](https://github.com/miily8310s/ddd-bottomup/blob/master/chap5/SampleCodes/5-2.ts)で出てきた RepositoryProgram クラスと同じコード
 
 ### ユーザ情報取得処理を作成する
+
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap6/SampleCodes/)
+の UseCaseUser.ts/UseCaseUserService.ts/IUseCaseUserRepository.ts
 
 - ユーザ情報の取得処理をアプリケーションサービスに追加する
 - ユーザ情報取得処理はユーザ登録処理と異なり、結果を返却する必要がある
