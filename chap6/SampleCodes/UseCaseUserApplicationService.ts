@@ -28,4 +28,27 @@ class UseCaseUserApplicationService {
     }
     return new UseCaseUserData(user);
   }
+  public updateUser(command: UseCaseUserUpdateCommand) {
+    const targetId = new UseCaseUserId(command.getId());
+    const user = this.userRepository.findOnId(targetId);
+    if (!user) {
+      return null;
+    }
+    const userName = command.getName();
+    // updateCommandにnameが渡されているときだけ更新
+    if (userName !== null) {
+      const newUserName = new UseCaseUserName(userName);
+      user.changeName(newUserName);
+      if (this.userService.exists(user)) {
+        throw new Error(`${userName}は既に存在しています`);
+      }
+    }
+    // updateCommandにmailAddressが渡されているときだけ更新
+    const mailAddress = command.getMailAddress();
+    if (mailAddress !== null) {
+      const newMailAddress = new UseCaseMailAddress(mailAddress);
+      user.changeMailAddress(newMailAddress);
+    }
+    this.userRepository.save(user);
+  }
 }
