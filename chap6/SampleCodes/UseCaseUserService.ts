@@ -3,6 +3,7 @@ class UseCaseUserService {
   constructor(userRepository: IUseCaseUserRepository) {
     this.userRepository = userRepository;
   }
+  // ドメインのルールをこちらに記載
   // ユーザーの重複を確認するメソッド
   public exists(user: UseCaseUser) {
     // リポジトリでデータストアに重複したユーザーがいないか確認
