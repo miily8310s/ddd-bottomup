@@ -51,4 +51,13 @@ class UseCaseUserApplicationService {
     }
     this.userRepository.save(user);
   }
+  public deleteUser(command: UseCaseUserDeleteCommand) {
+    const targetId = new UseCaseUserId(command.getId());
+    const user = this.userRepository.findOnId(targetId);
+    if (!user) {
+      // 対象が見つからなかったので退会成功とする
+      return;
+    }
+    this.userRepository.delete(user);
+  }
 }
