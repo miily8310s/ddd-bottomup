@@ -18,4 +18,14 @@ class UseCaseUserApplicationService {
     // 重複確認にも使ったリポジトリを使ってデータストアに保存
     this.userRepository.save(user);
   }
+  // Userオブジェクトを返さないように注意(changeNameメソッドがクライアント側から呼べるようになってしまうため)
+  // DTOを返すようにする
+  public getUser(userId: string) {
+    const targetId = new UseCaseUserId(userId);
+    const user = this.userRepository.findOnId(targetId);
+    if (!user) {
+      return null;
+    }
+    return new UseCaseUserData(user);
+  }
 }
