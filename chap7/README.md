@@ -110,7 +110,37 @@ class UserApplicationService {
 
 ## 7-4 依存関係をコントロールする
 
-TODO:ここにテキストを記載
+※JS/TS では DI コンテナ関係の実装に手間がかかるため、本節は読み進めるだけに留める
+
+- UserApplicationService がテスト用のリポジトリを利用してほしいのか、それともリレーショナルデータベースに接続するプロダクションようのリポジトリを利用してほしいのかどうかは、ときと場合による
+- 重要なのはどれを扱うかではなく、それをどのようにして制御するか
+- 依存関係をコントロールする手段について確認していく
+- あまり良くない例を見ていく [サンプルコード](https://github.com/nrslib/itddd/blob/master/SampleCodes/Chapter7/_06/UserApplicationService.cs)
+  - UserApplicationService をインスタンス化する際に、フィールドの userRepository をプロダクション用リポジトリ/テスト用のリポジトリに都度切り替えている
+  - リポジトリを切り替える単調な作業が必要になる
+- こういった問題を解決するために以下のパターンがある
+  - Service Locator パターン
+  - IoC Container パターン
+
+### Service Locator パターン
+
+- Service Locator パターンは ServiceLocator パターンと呼ばれるオブジェクトに依存解決先となるオブジェクトを事前に登録しておき、インスタンスが必要となる各所で ServiceLocator を経由してインスタンスを取得するパターン
+- 導入しやすい反面、アンチパターンと呼ばれている
+  - 依存関係が外部から見えづらくなる
+  - テストの維持が難しくなる
+
+### IoC Container パターン
+
+- まず Dependency Injection（依存の注入）について知る必要がある
+- 依存の注入はこんな感じ
+
+```ts
+const userRepository = new InMemoryUserRepository();
+const userApplicationService = new UserApplicationService(userRepository);
+```
+
+- コードの例のようなやり方は便利な一方で、依存するオブジェクトのインスタンス化をあちこちに記述する必要が出てくる
+- この問題を活躍するのが IoC Container パターン [サンプルコード](https://github.com/nrslib/itddd/blob/master/SampleCodes/Chapter7/_17/Program.cs)
 
 ## 7-5 まとめ
 
