@@ -10,3 +10,4 @@
 | ４章 | 不自然さを解決する「ドメインサービス」             | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap4) |
 | ５章 | データにまつわる処理を分離する「リポジトリ」       | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap5) |
 | ６章 | ユースケースを実現する「アプリケーションサービス」 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap6) |
+| ７章 | 柔軟性をもたらす依存関係のコントロール             | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap7) |
