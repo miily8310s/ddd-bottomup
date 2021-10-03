@@ -12,3 +12,4 @@
 | ６章 | ユースケースを実現する「アプリケーションサービス」 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap6) |
 | ７章 | 柔軟性をもたらす依存関係のコントロール             | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap7) |
 | ８章 | ソフトウェアシステムを組み立てる                   | (※JS/TS だと実装の再現に手間がかかるため一旦なし)                        |
+| ９章 | 複雑な生成処理を行う「ファクトリ」                 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap9) |
