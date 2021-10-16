@@ -21,7 +21,7 @@ class UserId {
   }
 }
 
-class User {
+export class User {
   private id: UserId;
   private name: UserName;
   constructor(id: UserId, name: UserName) {
@@ -42,7 +42,7 @@ class User {
   }
 }
 
-class Circle {
+export class Circle {
   private id: CircleId;
   private name: CircleName;
   private owner: User;
