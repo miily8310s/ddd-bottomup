@@ -50,3 +50,11 @@
 - サークルを生成するファクトリも同様に準備（サンプルコードの ICircleFactory）
 - サークル名の重複を確認する振る舞いをドメインサービスとして定義（サンプルコードの CircleService）
 - 以上で値オブジェクトからドメインサービスまで一通りのオブジェクトの用意が完了
+
+## 11-4 ユースケースを組み立てる
+
+[サンプルコード](https://github.com/miily8310s/ddd-bottomup/blob/master/chap11/SampleCodes/)
+
+- 最初はサークルを作成する処理を実装する
+  - まずはコマンドオブジェクトを準備する（サンプルコードの CircleCreateCommand）
+  - このコマンドオブジェクトを使って、サークルの作成処理を追加する（サンプルコードの CircleApplicationService）
