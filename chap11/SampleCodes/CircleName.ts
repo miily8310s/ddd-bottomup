@@ -1,7 +1,7 @@
-class CircleName {
+export class CircleName {
   private value: string;
   constructor(value: string) {
-    if (value === "") {
+    if (!value) {
       throw Error("ArgumentNullException value");
     }
     if (value.length < 3) {

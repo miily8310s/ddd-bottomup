@@ -1,7 +1,7 @@
-class CircleId {
+export class CircleId {
   private value: string;
   constructor(value: string) {
-    if (value === "") {
+    if (!value) {
       throw Error("ArgumentNullException value");
     }
     this.value = value;
