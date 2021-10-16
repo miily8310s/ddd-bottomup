@@ -12,7 +12,7 @@ class UserName {
   }
 }
 
-class UserId {
+export class UserId {
   private value: string;
 
   constructor(value: string) {
@@ -40,6 +40,11 @@ export class User {
   public getName() {
     return this.name;
   }
+}
+
+export interface IUserRepository {
+  save: (user: User) => void;
+  find: (userId: UserId) => User;
 }
 
 export class Circle {

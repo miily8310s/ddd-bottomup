@@ -1,7 +1,7 @@
 import { Circle } from "./Circle";
 import { ICircleRepository } from "./CircleRepository";
 
-class CircleServices {
+export class CircleServices {
   private readonly circleRepository: ICircleRepository;
   constructor(circleRepository: ICircleRepository) {
     this.circleRepository = circleRepository;
