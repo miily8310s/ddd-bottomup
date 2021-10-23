@@ -25,17 +25,18 @@
 - 集約を操作するためのオブジェクトは集約ルートと呼ばれるオブジェクト限定
 
 - 例えば、下記コードでユーザー名の変更は集約ルートである User オブジェクトに依頼をする形で行わければいけない
+
   - `changeName`といったメソッドを用意することで引き渡された値の確認が行えるため、不正なデータの存在を防ぐことができる
 
-```ts
-const userName = new UserName("NewName");
+  ```ts
+  const userName = new UserName("NewName");
 
-// NG
-userName.name = userName;
+  // NG
+  userName.name = userName;
 
-// OK
-user.changeName(userName);
-```
+  // OK
+  user.changeName(userName);
+  ```
 
 - 次はサークル集約について確認
 - サークル集約に含まれる「サークル名の操作」「サークルのメンバーを追加する」処理は集約ルート越しに行う必要がある
@@ -50,31 +51,79 @@ circle.getMembers().push(member);
 ```
 
 - この場合は Circle オブジェクトへのメソッド追加が望ましい
+
   - サークルのメンバー追加もこのメソッドを通すしか方法がない
   - 「サークルに所属するユーザの最大数はサークルのオーナーとなるユーザを含めて３０名まで」という不変条件も常に維持できる
   - 次の形でメソッドを追加する
 
-```ts
-export class Circle {
-  private id: CircleId;
-  private name: CircleName;
-  private owner: User;
-  // メンバーは非公開に
-  private members: User[];
-  // ...（略）
-  public join(member: User) {
-    if (!member) {
-      throw new Error(`ArgumentNullException member`);
+  ```ts
+  export class Circle {
+    private id: CircleId;
+    private name: CircleName;
+    private owner: User;
+    // メンバーは非公開に
+    private members: User[];
+    // ...（略）
+    public join(member: User) {
+      if (!member) {
+        throw new Error(`ArgumentNullException member`);
+      }
+      if (this.members.length >= 29) {
+        throw new Error(`CircleFullException ${this.id}`);
+      }
+      this.members.push(member);
     }
-    if (this.members.length >= 29) {
-      throw new Error(`CircleFullException ${this.id}`);
-    }
-    this.members.push(member);
   }
-}
-```
+  ```
 
 - オブジェクト指向プログラミングでは、外部から内部のオブジェクトに対して直接操作するのではなく、それを保持するオブジェクトに以来する形を取る
 - そうすることで直感的かつ不変条件を維持することができる「デメテルの法則」
 
 ### オブジェクトの操作に関する基本的な原則
+
+- 「デメテルの法則」はオブジェクト同士のメソッド呼び出しに秩序をもたらすガイドライン
+- デメテルの法則によると、メソッドを呼び出すオブジェクトは次の４つに限定される
+  - オブジェクト自身
+  - インスタンス変数
+  - 引数として渡されたオブジェクト
+  - 直接インスタンス化したオブジェクト
+- デメテルの法則が解決したい問題を紐解いて見る
+- メンバーを追加する際の上限チェックで使用するコードが以下の形である
+  ```ts
+  if (circle.members.length >= 29) {
+    throw new Error(`CircleFullException ${this.id}`);
+  }
+  ```
+- このコードは Circle オブジェクトのプロパティである Members を直接操作し、length プロパティを呼び出している
+  - 上限チェック用のロジックが点在することを助長してしまう
+  - デメテルの法則の「メソッドを呼び出しているオブジェクト」のいずれにもあてはまらない
+- デメテルの法則に従い次のようにコードを書き換える
+  ```ts
+  // （略）
+  public isFull():boolean {
+    return members.length >= 29;
+  };
+  public join(member: User) {
+    if (!member) {
+      throw new Error(`ArgumentNullException member`);
+    }
+    // 上限チェックのコードはすべてisFullメソッドに置き換わる
+    if (isFull) {
+      throw new Error(`CircleFullException ${this.id}`);
+    }
+    this.members.push(member);
+  }
+  ```
+- もし上限数が変更されていても isFull メソッドの修正だけで解決する
+- デメテルの法則はソフトウェアのメンテナンス性を向上させ、コードをより柔軟なものへ導く
+
+### 内部データを隠蔽するために
+
+- オブジェクトの内部データはむやみに公開すべきものではない
+- しかし完全に非公開にするとリポジトリがインスタンスを永続化しようとしたときに困ったことがおこる
+  - User クラスの id や name が非公開になり、コンパイルエラーがおこる
+- この問題に対するアプローチは２つある
+  - ルールによる防衛（=ゲッターを使わない）→ 制限力が低いのが難点
+  - 通知オブジェクトを使用する
+
+## 12-2 集約をどう区切るか
