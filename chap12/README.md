@@ -100,7 +100,7 @@ circle.getMembers().push(member);
 - デメテルの法則に従い次のようにコードを書き換える
   ```ts
   // （略）
-  public isFull():boolean {
+  public isFull() {
     return members.length >= 29;
   };
   public join(member: User) {
