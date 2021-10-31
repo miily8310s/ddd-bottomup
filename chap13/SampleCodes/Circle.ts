@@ -80,13 +80,28 @@ export class CircleName {
 
 export class Circle {
   private members: UserId[];
+  private id: CircleId;
+  private name: CircleName;
+  private created: number;
   constructor(members: UserId[]) {
     if (!members) {
       throw Error("ArgumentNullException members");
     }
     this.members = members;
+    this.id = new CircleId("");
+    this.name = new CircleName("");
+    this.created = Date.now();
+  }
+  public getId() {
+    return this.id;
+  }
+  public getName() {
+    return this.name;
   }
   public getMembers() {
     return this.members;
+  }
+  public getCreated() {
+    return this.created;
   }
 }

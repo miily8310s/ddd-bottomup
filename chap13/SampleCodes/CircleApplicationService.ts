@@ -3,11 +3,32 @@ import {
   CircleFullSpecification,
   IUserRepository,
 } from "./CircleFullSpecification";
+import { CircleRecommendSpecification } from "./CircleRecommendSpecification";
 
 export interface ICircleRepository {
   save: (circle: Circle) => void;
+  findAll: () => Circle[];
   findById: (id: CircleId) => Circle;
   findByName: (name: CircleName) => Circle;
+  findRecommended: (now: Date) => Circle[];
+}
+
+interface CircleGetRecommendRequest {}
+
+class CircleSummaryData {
+  private id: string;
+  private name: string;
+  constructor(circle: Circle) {
+    this.id = circle.getId().getValue();
+    this.name = circle.getName().getValue();
+  }
+}
+class CircleGetRecommendResult {
+  constructor(recommendCircles: Circle[]) {
+    return recommendCircles.map(
+      (recommendCircle) => new CircleSummaryData(recommendCircle)
+    );
+  }
 }
 
 export class CircleJoinCommand {
@@ -30,6 +51,7 @@ export class CircleJoinCommand {
 class CircleApplicationService {
   private readonly circleRepository: ICircleRepository;
   private readonly userRepository: IUserRepository;
+  private readonly now: Date;
 
   constructor(
     circleRepository: ICircleRepository,
@@ -37,6 +59,7 @@ class CircleApplicationService {
   ) {
     this.circleRepository = circleRepository;
     this.userRepository = userRepository;
+    this.now = new Date();
   }
 
   public join(command: CircleJoinCommand) {
@@ -54,5 +77,15 @@ class CircleApplicationService {
     }
     this.circleRepository.save(circle);
     // ここでトランザクション終わり
+  }
+  public getRecommendResult(
+    request: CircleGetRecommendRequest
+  ): CircleGetRecommendResult {
+    const circles = this.circleRepository.findAll();
+    const recommendCircleSpec = new CircleRecommendSpecification(this.now);
+    const recommedCircles = circles.filter((circle) =>
+      recommendCircleSpec.isSatisfiedBy(circle)
+    );
+    return new CircleGetRecommendResult(recommedCircles);
   }
 }
