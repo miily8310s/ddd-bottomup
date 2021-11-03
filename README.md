@@ -16,3 +16,5 @@
 | １０章 | データの整合性を保つ                               | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap10) |
 | １１章 | アプリケーションを１から組み立てる                 | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap11) |
 | １２章 | ドメインのルールを守る「集約」                     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap12) |
+| １３章 | 複雑な条件を表現する「仕様」                       | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap13) |
+| １４章 | アーキテクチャ                                     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap14) |
