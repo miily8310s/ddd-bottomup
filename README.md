@@ -18,3 +18,4 @@
 | １２章 | ドメインのルールを守る「集約」                     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap12) |
 | １３章 | 複雑な条件を表現する「仕様」                       | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap13) |
 | １４章 | アーキテクチャ                                     | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap14) |
+| １５章 | ドメイン駆動設計のとびらを開こう                   | [学習メモ](https://github.com/miily8310s/ddd-bottomup/tree/master/chap15) |
